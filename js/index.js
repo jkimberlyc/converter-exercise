@@ -13,13 +13,13 @@ var toUnit;
     
     if (field==='field1' || field==='select1' || field==='select2'){
       currentField = "field1";
-      currentFieldValue = input1.value;
+      currentFieldValue = document.getElementById("input1").value;
       targetField = document.getElementById("input2");
       fromUnit = unit1Name;
       toUnit = unit2Name;
     } else if (field==='field2') {
       currentField = 'field2';
-      currentFieldValue = input2.value;
+      currentFieldValue = document.getElementById("input2").value;
       targetField = document.getElementById("input1");
       fromUnit = unit2Name;
       toUnit = unit1Name;
