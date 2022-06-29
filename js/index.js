@@ -26,8 +26,11 @@ var toUnit;
     }
 
     targetField.value="";
-    if(currentFieldValue < 0) alert("Please enter a positive number.");
-    
+    if(currentFieldValue < 0){
+      alert("Please enter a positive number.");
+      advReset();
+    }
+
     if(fromUnit === "Pound (lbs)"){
       if(toUnit === "Pound (lbs)"){
         alert("Please select a different unit.");
