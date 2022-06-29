@@ -13,7 +13,7 @@ var toUnit;
     
     if (field==='field1' || field==='select1' || field==='select2'){
       currentField = "field1";
-      currentFieldValue = document.getElementById("input1").value;
+      currentFieldValue = (document.getElementById("input1").value);
       targetField = document.getElementById("input2");
       fromUnit = unit1Name;
       toUnit = unit2Name;
@@ -26,21 +26,31 @@ var toUnit;
     }
 
     targetField.value="";
-
+    if(currentFieldValue < 0) alert("Please enter a positive number.");
+    
     if(fromUnit === "Pound (lbs)"){
-      if(toUnit === "Pound (lbs)") targetField.value = currentFieldValue;
+      if(toUnit === "Pound (lbs)"){
+        alert("Please select a different unit.");
+        resetUnit(field);
+      }
       if(toUnit === "Ounce (oz)") targetField.value = parseFloat(parseFloat(currentFieldValue)*16);
       if(toUnit === "Kilogram (kg)") targetField.value = parseFloat(parseFloat(currentFieldValue)/2.205);
     }
 
     else if(fromUnit === "Ounce (oz)"){
-      if(toUnit === "Ounce (oz)") targetField.value = currentFieldValue;
+      if(toUnit === "Ounce (oz)"){
+        alert("Please select a different unit.");
+        resetUnit(field);
+      }
       if(toUnit === "Pound (lbs)") targetField.value = parseFloat(parseFloat(currentFieldValue)/16);
       if(toUnit === "Kilogram (kg)") targetField.value = parseFloat(parseFloat(currentFieldValue)/35.274);
     }
 
     else if(fromUnit === "Kilogram (kg)"){
-      if(toUnit === "Kilogram (kg)") targetField.value = currentFieldValue;
+      if(toUnit === "Kilogram (kg)"){
+        alert("Please select a different unit.")
+        resetUnit(field);
+      }
       if(toUnit === "Pound (lbs)") targetField.value = parseFloat(parseFloat(currentFieldValue)*2.205);
       if(toUnit === "Ounce (oz)") targetField.value = parseFloat(parseFloat(currentFieldValue)*35.274);
     }
@@ -54,4 +64,11 @@ var toUnit;
     document.getElementById("reset2").innerHTML = "<button class='btn text-danger m-3 invisible' onclick='advReset()'>Reset</button>";
     document.getElementById("unitOptions1").selectedIndex = 0
     document.getElementById("unitOptions2").selectedIndex = 0
+  }
+
+  function resetUnit(field){
+    if(field==='select1'){
+      document.getElementById("unitOptions1").selectedIndex = 0
+    } else document.getElementById("unitOptions2").selectedIndex = 0
+    
   }
